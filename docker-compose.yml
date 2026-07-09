@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  mongodb_gestion:
+    image: mongo:7.0
+    container_name: mongodb_gestion_app
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: Gato#3838
+      MONGO_INITDB_DATABASE: ComercioTech
+    ports:
+      - "27017:27017"
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 2G
+        reservations:
+          memory: 1G
+    volumes:
+      - mongo_data:/data/db
+      - mongo_config:/data/configdb
+      - ./mongod.conf:/etc/mongod.conf
+    command:
+      - "--config"
+      - "/etc/mongod.conf"
+    networks:
+      - red_gestion
+volumes:
+  mongo_data:
+    driver: local
+  mongo_config:
+    driver: local
+networks:
+  red_gestion:
+    driver: bridge
