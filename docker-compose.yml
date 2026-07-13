@@ -9,7 +9,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: Gato#3838
       MONGO_INITDB_DATABASE: ComercioTech
     ports:
-      - "27017:27017"
+      - "27018:27017"
     deploy:
       resources:
         limits:
@@ -21,6 +21,8 @@ services:
       - mongo_data:/data/db
       - mongo_config:/data/configdb
       - ./mongod.conf:/etc/mongod.conf
+      - ./mongo-init:/docker-entrypoint-initdb.d
+      - ./backups:/backup
     command:
       - "--config"
       - "/etc/mongod.conf"
