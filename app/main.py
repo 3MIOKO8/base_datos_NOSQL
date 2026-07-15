@@ -13,11 +13,8 @@ def principal():
 
     db = conexion.obtener_db()
 
-
     servicio_cliente = ServicioCliente(db)
-
     servicio_producto = ServicioProducto(db)
-
     servicio_pedido = ServicioPedido(db)
 
 

@@ -358,7 +358,7 @@ def principal():
     conexion = ConexionMongo()
     db = conexion.obtener_db()
     servicio = ServicioPedido(db)
-    listar_pedidos(servicio)
+    crear_pedido(servicio)
 
 
 
